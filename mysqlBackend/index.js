@@ -1,11 +1,17 @@
 //const ExceptionDebugger = require('debug')("app:ExceptionDebug");
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 console.log('hi');
 require("./startup/logging")();
-
+app.use(cors({
+    allowedHeaders:"Origin, Content-Type, x-auth-token, content-type",
+    exposedHeaders:"x-auth-token"
+    //"Access-Control-Allow-Headers":"Origin, Content-Type, x-auth-token, content-type",
+    //"Access-Control-Allow-Headers":"x-auth-token"
+}));
 require("./startup/routes")(app);
 
 
