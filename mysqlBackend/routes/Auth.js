@@ -26,7 +26,7 @@ router.post("/", asyncMiddleWare(async(req,res)=>{
       const validUser=  await bcrypt.compare(UserAuthObj.UserPassword,user[0][0].UserPassword);
       if(validUser){
         const token= await UserAuthModel.GenerateTokenAsync(user[0][0]);
-        res.header('x-auth-token',token).status(200).send();
+        res.header('x-auth-token',token).status(200).send({"jh0":"mni"});
       }else{
         res.status(401).send("User Name or Passord is incorrect");
       }

@@ -7,8 +7,11 @@ const app = express();
 console.log('hi');
 require("./startup/logging")();
 app.use(cors({
-    allowedHeaders:"Origin, Content-Type, x-auth-token, content-type",
-    exposedHeaders:"x-auth-token"
+    origin:"*",
+    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue:false,
+    allowedHeaders:"Origin,Content-Type,x-auth-token,content-type",
+    exposedHeaders:"x-auth-token,X-Auth-Token"
     //"Access-Control-Allow-Headers":"Origin, Content-Type, x-auth-token, content-type",
     //"Access-Control-Allow-Headers":"x-auth-token"
 }));
